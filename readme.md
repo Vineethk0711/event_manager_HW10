@@ -24,39 +24,69 @@ Overall, the challenges encountered during this assignment underscored the value
    Added Testcases to increase the test coverage upto 95% on the Pytest coverage run. 
    Coverage report afer the successful workflow run.
    ```bash
-   ---------------
+   got 94% tests pass 
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Name                                       Stmts   Miss  Cover
+--------------------------------------------------------------
+app/__init__.py                                0      0   100%
+app/database.py                               16      3    81%
+app/dependencies.py                           39      3    92%
+app/main.py                                   16      3    81%
+app/models/user_model.py                      49      0   100%
+app/routers/__init__.py                        0      0   100%
+app/routers/user_routes.py                    84     40    52%
+app/schemas/link_schema.py                     8      0   100%
+app/schemas/pagination_schema.py              20      1    95%
+app/schemas/token_schema.py                    7      0   100%
+app/schemas/user_schemas.py                   67      1    99%
+app/services/__init__.py                       0      0   100%
+app/services/email_service.py                 18      1    94%
+app/services/jwt_service.py                   18      2    89%
+app/services/user_service.py                 164     12    93%
+app/utils/__init__.py                          0      0   100%
+app/utils/api_description.py                   3      0   100%
+app/utils/link_generation.py                  24      0   100%
+app/utils/nickname_gen.py                      7      0   100%
+app/utils/security.py                         21      0   100%
+app/utils/smtp_connection.py                  27      2    93%
+app/utils/template_manager.py                 25      0   100%
+settings/__init__.py                           0      0   100%
+settings/config.py                            41      0   100%
+tests/__init__.py                              0      0   100%
+tests/conftest.py                            134      2    99%
+tests/test_api/test_users_api.py             126      0   100%
+tests/test_conftest.py                        51      0   100%
+tests/test_dependencies.py                    43      0   100%
+tests/test_email.py                            7      0   100%
+tests/test_link_generation.py                 39      0   100%
+tests/test_models/test_user_model.py          85      0   100%
+tests/test_schemas/__init__.py                 0      0   100%
+tests/test_schemas/test_user_schemas.py       49      0   100%
+tests/test_security.py                        43      0   100%
+tests/test_services/test_user_service.py     131     11    92%
+--------------------------------------------------------------
+TOTAL                                       1362     81    94%
    ```
  
- ### Issues Addressed:
-   Issue #7: [UUID is not passed correctly](https://github.com/Chelsyshankiri/event_manager_homework10/issues/7)
-  
-   Issue: Instead of passing UUID that will be unique for response data.Passing a unique-id-string which is a string as its own
-   
-   Resolution: Fixed the issue by ensuring that the UUID was correctly passed in while creating response data. After testing it is confirmed that it is working fine.
- 
-   Issue #4: [SMTPServerDisconnected : Connection unexpectedly closed running email functionalities](https://github.com/Chelsyshankiri/event_manager_homework10/issues/4)
- 
-   Issue: SMTPServerDisconnected: Connection unexpectedly closed running email functionalities
- 
-   Resolution: I have added the environment varibales of username and password for this and passed the same in the workflow code to make the SMTP connection stable. Test cases have shown that after doing this the connection is stable and the test cases are passed.
- 
-   Issue #3 [In Tests, Missing fixtures for user admin and manager tokens](https://github.com/Chelsyshankiri/event_manager_homework10/issues/3)
- 
-   Issue: Missing Fixtures: user_token, admin_token, and manager_token in Tests.
- 
-   Resolution: Added the code for the missing fixtures like admin_token, user_token and manager_token that are the cause for failure in multiple test cases. After the running the test suite we have ensured that all the token dependent code is working fine.
- 
-   Issue #2 [PydanticValidationError on LoginRequest](https://github.com/Chelsyshankiri/event_manager_homework10/issues/2)
- 
-   Issue: pydantic ValidationError for LoginRequest
- 
-   Resolution: There are few validation errors that are identified and I have corrected the schema for LoginRequest to align with expected fields. Updated the input validation logic and added unit tests to cover edge cases.
- 
-   Issue #1 [UserData Fetch is failing](https://github.com/Chelsyshankiri/event_manager_homework10/issues/1)
- 
-   Issue: UserData fetch Failure 
- 
-   Resolution: A few details like nickname,username and UUID are not correctly fetched and passed to add or get the data which in result makes the model formation wrong.
+### Issues Addressed:
+
+
+
+**Issue #4 [AttributeError: 'UserRole' object has no attribute 'upper' on multiple test cases](https://github.com/Vineethk0711/event_manager_HW10/issues/4)**  
+**Issue**: Several test cases in `tests/test_api/test_users_api.py` failed due to an `AttributeError` when attempting to call the `upper()` method on a `UserRole` enum instance. The error occurred because the code expected a string, not an enum object.  
+**Resolution**: The issue was resolved by explicitly converting the enum to a string before applying the `upper()` method (e.g., using `user_role.name.upper()` or `str(user_role).upper()`). This fixed the type mismatch and allowed all affected test cases to pass successfully.
+
+**Issue #3 [In Tests, Missing fixtures for user admin and manager tokens](https://github.com/Vineethk0711/event_manager_HW10/issues/3)**  
+**Issue**: The tests were failing due to the absence of required fixtures like `user_token`, `admin_token`, and `manager_token` which are needed to authorize test requests.  
+**Resolution**: The missing fixtures were defined and integrated correctly into the test suite. After updating, all tests that rely on role-based access using tokens passed successfully.
+
+**Issue #2 [PydanticValidationError on LoginRequest](https://github.com/Vineethk0711/event_manager_HW10/issues/2)**  
+**Issue**: Pydantic validation errors were being raised when attempting to validate the `LoginRequest` and `UserResponse` models due to incorrect or mismatched input data.  
+**Resolution**: The input schema was corrected to match the expected structure. The validation logic was updated, and additional unit tests were written to cover common edge cases.
+
+**Issue #1 [UserData Fetch is failing](https://github.com/Vineethk0711/event_manager_HW10/issues/1)**  
+**Issue**: Several fields like `nickname`, `username`, and `UUID` were not being correctly retrieved or passed when fetching user data, resulting in malformed model responses.  
+**Resolution**: The data retrieval logic was updated to ensure proper fetching and passing of all required fields. After testing, the user data models are now constructed correctly without errors.
 
 
 ## Assignment Objectives
