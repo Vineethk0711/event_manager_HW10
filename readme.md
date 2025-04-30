@@ -2,6 +2,63 @@
 
 Welcome to the Event Manager Company! As a newly hired Software QA Analyst/Developer and a student in software engineering, you are embarking on an exciting journey to contribute to our project aimed at developing a secure, robust REST API that supports JWT token-based OAuth2 authentication. This API serves as the backbone of our user management system and will eventually expand to include features for event management and registration.
 
+## Submissions:
+ 
+ ### Learnings from this event manager HW 10 Assignment
+
+Through this assignment, I gained valuable insights into both the technical and collaborative dimensions of software development.
+
+On the technical front, the project significantly enhanced my understanding of key concepts such as API debugging, design, and testing. I had the opportunity to step into the role of a QA analyst—executing the test suite, diagnosing failing test cases, and tracing issues throughout the codebase. This hands-on approach deepened my understanding of the system’s dependencies and overall architecture.
+
+While resolving the identified issues, I frequently referred to best practices, which helped refine my coding skills and strengthen my problem-solving abilities. Associating commits with specific issues also highlighted the importance of traceability and maintaining clear documentation within a project.
+
+Overall, the challenges encountered during this assignment underscored the value of structured debugging, reliable error resolution, and disciplined version control. More importantly, it reinforced how essential collaboration is in building robust and maintainable software.
+
+ ### Project Image deployed to docker hub
+ [DockerHub Repository Link](https://hub.docker.com/repository/docker/vm674/event_manager)
+ 
+ ![dockerhub deployment image](![alt text](image.png))
+ 
+ ### Test Coverage
+ 
+   Added Testcases to increase the test coverage upto 95% on the Pytest coverage run. 
+   Coverage report afer the successful workflow run.
+   ```bash
+   ---------------
+   ```
+ 
+ ### Issues Addressed:
+   Issue #7: [UUID is not passed correctly](https://github.com/Chelsyshankiri/event_manager_homework10/issues/7)
+  
+   Issue: Instead of passing UUID that will be unique for response data.Passing a unique-id-string which is a string as its own
+   
+   Resolution: Fixed the issue by ensuring that the UUID was correctly passed in while creating response data. After testing it is confirmed that it is working fine.
+ 
+   Issue #4: [SMTPServerDisconnected : Connection unexpectedly closed running email functionalities](https://github.com/Chelsyshankiri/event_manager_homework10/issues/4)
+ 
+   Issue: SMTPServerDisconnected: Connection unexpectedly closed running email functionalities
+ 
+   Resolution: I have added the environment varibales of username and password for this and passed the same in the workflow code to make the SMTP connection stable. Test cases have shown that after doing this the connection is stable and the test cases are passed.
+ 
+   Issue #3 [In Tests, Missing fixtures for user admin and manager tokens](https://github.com/Chelsyshankiri/event_manager_homework10/issues/3)
+ 
+   Issue: Missing Fixtures: user_token, admin_token, and manager_token in Tests.
+ 
+   Resolution: Added the code for the missing fixtures like admin_token, user_token and manager_token that are the cause for failure in multiple test cases. After the running the test suite we have ensured that all the token dependent code is working fine.
+ 
+   Issue #2 [PydanticValidationError on LoginRequest](https://github.com/Chelsyshankiri/event_manager_homework10/issues/2)
+ 
+   Issue: pydantic ValidationError for LoginRequest
+ 
+   Resolution: There are few validation errors that are identified and I have corrected the schema for LoginRequest to align with expected fields. Updated the input validation logic and added unit tests to cover edge cases.
+ 
+   Issue #1 [UserData Fetch is failing](https://github.com/Chelsyshankiri/event_manager_homework10/issues/1)
+ 
+   Issue: UserData fetch Failure
+ 
+   Resolution: A few details like nickname,username and UUID are not correctly fetched and passed to add or get the data which in result makes the model formation wrong.
+
+
 ## Assignment Objectives
 
 1. **Familiarize with REST API functionality and structure**: Gain hands-on experience working with a REST API, understanding its endpoints, request/response formats, and authentication mechanisms.
