@@ -54,7 +54,7 @@ Overall, the challenges encountered during this assignment underscored the value
  
    Issue #1 [UserData Fetch is failing](https://github.com/Chelsyshankiri/event_manager_homework10/issues/1)
  
-   Issue: UserData fetch Failure
+   Issue: UserData fetch Failure 
  
    Resolution: A few details like nickname,username and UUID are not correctly fetched and passed to add or get the data which in result makes the model formation wrong.
 
